@@ -3,7 +3,7 @@
 
 echo "NAMESPACE=$NAMESPACE MODULEPATH=$MODULEPATH MODULENAME=$MODULENAME"
 KANIKO_POD=$(kubectl -n $NAMESPACE get pods | grep "kaniko" | cut -d' ' -f1)
-BAD_RANDOM=$(echo $RANDOM-$RANDOM-$RANDOM-$RANDOM | openssl dgst -sha1 )
+BAD_RANDOM=$(echo $RANDOM-$RANDOM-$RANDOM-$RANDOM | openssl dgst -sha1 | awk '{print $2}' | tr -d '\n' )
 kubectl create namespace $NAMESPACE
 #kubectl create -n $NAMESPACE secret generic ssh-key-secret --from-file=ssh-privatekey=$HOME/.ssh/id_ecdsa --from-file=ssh-publickey=$HOME/.ssh/id_ecdsa.pub --from-literal=ssh-key-type=ecdsa
 echo "CURRENT KANIKO POD is kaniko-$BAD_RANDOM"
