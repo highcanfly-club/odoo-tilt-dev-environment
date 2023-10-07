@@ -1,5 +1,5 @@
 allow_k8s_contexts('kubernetesOCI')
-sha1=str(local("cat Dockerfile | openssl dgst -sha1 | awk '{print $2}' | tr -d '\n'"))
+sha1=str(local("cat Dockerfile | openssl dgst -sha1 -r | awk '{print $1}' | tr -d '\n'"))
 Namespace='sandbox-odoo-dev'
 ModuleName='my_module'
 ModulePath='./'+ModuleName
