@@ -33,7 +33,7 @@ tar -cv --exclude "node_modules" --exclude "dkim.rsa" --exclude "private" --excl
           "--push-retry=3",
           "--cache=true",
           "--cache-ttl=24h",
-          "--cache-repo='$DOCKER_REGISTRY-cache'"
+          "--cache-repo='$DOCKER_CACHE_REGISTRY'"
         ]
       }
     ],
